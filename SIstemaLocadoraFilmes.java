@@ -5,8 +5,10 @@ public class SIstemaLocadoraFilmes {
     static Scanner SC = new Scanner(System.in);
     static HashMap<String, String> filmes = new HashMap<>();
     static HashMap<String, String> clientes = new HashMap<>();
+    static HashMap<String, String> emprestimo = new HashMap<>();
 
     public static void main(String[] args) {
+        mostrarMenu();
     }
 
     public static void mostrarMenu() {
@@ -78,7 +80,23 @@ public class SIstemaLocadoraFilmes {
                 String titulos = filmes.get(codigos);
                 System.out.println("Codigo: " + codigos + " Titulos: " + titulos);
             }
-                
+            System.out.println("Insira o id do filme\n>");
+            String idFilme = SC.next();
+            if(!filmes.containsKey(idFilme)){
+                System.out.println("Filme não existente retornando ao menu...");
+                return;
+            }else{
+                emprestimo.put(cpf, idFilme);
+            }
+            }
+        }
+        public static void listarLocacoesCliente(){
+            System.out.println("Todos os IDS de filmes alugados e os seus respectivos CPFs");
+            for (String cpf : emprestimo.keySet()) {
+                String nomeCliente = emprestimo.get(cpf);
+                String idFilme = emprestimo.get(cpf);
+                String tituloFilmes = emprestimo.get(cpf);
+                System.out.println("Cliente: "  + nomeCliente + "CPF: " + cpf + " Filme alugado: " + tituloFilmes + " Id do filme: " + idFilme);
             }
         }
     }
